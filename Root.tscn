@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/room_4_spatialmaterial.tres" type="Material" id=14]
-[ext_resource path="res://PreviewPlayer.gd" type="Script" id=15]
+[ext_resource path="res://scripts/PreviewPlayer.gd" type="Script" id=15]
 [ext_resource path="res://assets/room_2_spatialmaterial.tres" type="Material" id=16]
 [ext_resource path="res://assets/room_1_spatialmaterial.tres" type="Material" id=17]
 [ext_resource path="res://assets/room_3_spatialmaterial.tres" type="Material" id=18]
