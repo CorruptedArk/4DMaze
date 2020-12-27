@@ -150,6 +150,14 @@ shape = SubResource( 1 )
 
 [node name="Room 1" type="Spatial" parent="."]
 
+[node name="Platform_1" type="CSGBox" parent="Room 1"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 36.548, 15.9975, -0.520769 )
+material_override = ExtResource( 17 )
+use_collision = true
+width = 0.1
+height = 17.4014
+depth = 84.8099
+
 [node name="Box" type="Spatial" parent="Room 1"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 1/Box"]
@@ -281,6 +289,14 @@ material = ExtResource( 17 )
 [node name="Room 2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0 )
 
+[node name="Platform_1" type="CSGBox" parent="Room 2"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -2.01647, 29.2743, -33.1635 )
+use_collision = true
+width = 0.1
+height = 80.3401
+depth = 10.0
+material = ExtResource( 16 )
+
 [node name="Box" type="Spatial" parent="Room 2"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 2/Box"]
@@ -337,7 +353,7 @@ material/0 = ExtResource( 16 )
 shape = SubResource( 4 )
 
 [node name="Wall_4" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569376, 37.0752, -37.7189 )
+transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569374, 37.0752, -37.7189 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 16 )
@@ -413,6 +429,22 @@ material = ExtResource( 16 )
 
 [node name="Room 3" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0 )
+
+[node name="Ramp_1" type="CSGBox" parent="Room 3"]
+transform = Transform( -0.5, 0.866025, 3.25841e-07, 0.866025, 0.5, 0, -1.62921e-07, 2.82187e-07, -1, 10, 6.096, 34.6552 )
+use_collision = true
+width = 0.1
+height = 40.0
+depth = 10.0
+material = ExtResource( 18 )
+
+[node name="Ramp_2" type="CSGBox" parent="Room 3"]
+transform = Transform( -8.14603e-08, 1.41093e-07, 1, 0.866025, 0.5, 0, -0.5, 0.866025, -1.62921e-07, -35.2101, 40.3702, -13.2244 )
+use_collision = true
+width = 0.1
+height = 40.0
+depth = 10.0
+material = ExtResource( 18 )
 
 [node name="Box" type="Spatial" parent="Room 3"]
 
@@ -493,14 +525,6 @@ material/0 = SubResource( 6 )
 
 [node name="Starting_Cage3" type="Spatial" parent="Room 3"]
 
-[node name="Ramp_1" type="CSGBox" parent="Room 3/Starting_Cage3"]
-transform = Transform( -0.5, 0.866025, 3.25841e-07, 0.866025, 0.5, 0, -1.62921e-07, 2.82187e-07, -1, 10, 6.096, 30 )
-use_collision = true
-width = 0.1
-height = 40.0
-depth = 10.0
-material = ExtResource( 18 )
-
 [node name="Wall_1" type="CSGBox" parent="Room 3/Starting_Cage3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10, 0 )
 use_collision = true
@@ -553,6 +577,14 @@ material = ExtResource( 18 )
 [node name="Room 4" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0 )
 
+[node name="Ramp_1" type="CSGBox" parent="Room 4"]
+transform = Transform( -1.15202e-07, -1.15202e-07, 1, -0.818471, 0.574548, -2.81004e-08, -0.574548, -0.818471, -1.60479e-07, 33.3749, 22.7221, -20.1572 )
+use_collision = true
+width = 0.1
+height = 24.535
+depth = 10.0
+material = ExtResource( 14 )
+
 [node name="Box" type="Spatial" parent="Room 4"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 4/Box"]
@@ -587,7 +619,7 @@ material/0 = ExtResource( 14 )
 shape = SubResource( 4 )
 
 [node name="Wall_2" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2511, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2794, 37.0752, 1.93033 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 14 )

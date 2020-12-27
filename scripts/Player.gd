@@ -4,8 +4,8 @@ const GRAVITY = -24.8
 #const GRAVITY = 0
 export var vel = Vector3()
 const MAX_SPEED = 20
-const SPRINT_MULTIPLIER = 1.08
-const JUMP_SPEED = 18
+const SPRINT_MULTIPLIER = 1.0005
+const JUMP_SPEED = 15
 const ACCEL = 4.5
 
 var room = 1
