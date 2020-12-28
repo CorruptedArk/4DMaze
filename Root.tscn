@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://assets/ceiling_and_floor_mesh.tres" type="PlaneMesh" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/wall_boxshape.tres" type="Shape" id=3]
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
+[ext_resource path="res://assets/ceiling_and_floor_boxshape.tres" type="Shape" id=6]
 [ext_resource path="res://assets/room_4_spatialmaterial.tres" type="Material" id=14]
 [ext_resource path="res://scripts/PreviewPlayer.gd" type="Script" id=15]
 [ext_resource path="res://assets/room_2_spatialmaterial.tres" type="Material" id=16]
@@ -18,11 +21,11 @@ size = 42
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="PlaneMesh" id=3]
-size = Vector2( 80, 80 )
+[sub_resource type="SpatialMaterial" id=7]
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 40, 0.1, 40 )
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 7 )
+size = Vector2( 80, 200 )
 
 [sub_resource type="SphereMesh" id=5]
 radius = 3.0
@@ -49,7 +52,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7, 0 )
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
 current = true
 fov = 90.0
-far = 180.0
+far = 250.0
 
 [node name="HUD" type="Control" parent="Player"]
 margin_top = 3.5636
@@ -124,7 +127,7 @@ render_target_update_mode = 3
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -0.967, 14.533, 1.122 )
 current = true
 fov = 90.0
-far = 180.0
+far = 250.0
 
 [node name="PreviewPlayer" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.967, 9.833, 1.122 )
@@ -151,37 +154,67 @@ shape = SubResource( 1 )
 [node name="Room 1" type="Spatial" parent="."]
 
 [node name="Platform_1" type="CSGBox" parent="Room 1"]
-transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 36.548, 15.9975, -0.520769 )
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 35, 16, 0 )
 material_override = ExtResource( 17 )
 use_collision = true
 width = 0.1
-height = 17.4014
-depth = 84.8099
+height = 10.0
+depth = 80.0
+
+[node name="Platform_2" type="CSGBox" parent="Room 1"]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 60, 0 )
+material_override = ExtResource( 17 )
+use_collision = true
+width = 0.1
+height = 80.0
+depth = 80.0
+
+[node name="Platform_3" type="CSGBox" parent="Room 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0 )
+material_override = ExtResource( 17 )
+use_collision = true
+width = 80.0
+height = 0.1
+depth = 80.0
+
+[node name="Hole_1" type="CSGBox" parent="Room 1/Platform_3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -6.0446 )
+operation = 2
+width = 10.0
+height = 1.0
+depth = 30.0
+
+[node name="Ramp_1" type="CSGBox" parent="Room 1"]
+transform = Transform( 1, 0, 0, 0, 0.847641, 0.53057, 0, -0.53057, 0.847641, 35, 70.2683, -7.40231 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 38.554
+material = ExtResource( 17 )
 
 [node name="Box" type="Spatial" parent="Room 1"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 1/Box"]
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 17 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Floor_plane"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Floor_plane/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 6 )
 
-[node name="Celing_plane" type="MeshInstance" parent="Room 1/Box"]
-transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 75.2188, 0 )
-cast_shadow = 2
-mesh = SubResource( 3 )
+[node name="Ceiling_plane" type="MeshInstance" parent="Room 1/Box"]
+transform = Transform( 1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 200, 0 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 17 )
 
-[node name="StaticBody" type="StaticBody" parent="Room 1/Box/Celing_plane"]
+[node name="StaticBody" type="StaticBody" parent="Room 1/Box/Ceiling_plane"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Celing_plane/StaticBody"]
-shape = SubResource( 4 )
+[node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Ceiling_plane/StaticBody"]
+shape = ExtResource( 6 )
 
 [node name="Wall_1" type="MeshInstance" parent="Room 1/Box"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.640566, 37.0752, 39.6568 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 17 )
@@ -189,10 +222,10 @@ material/0 = ExtResource( 17 )
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Wall_1/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_2" type="MeshInstance" parent="Room 1/Box"]
-transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2511, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 17 )
@@ -200,10 +233,10 @@ material/0 = ExtResource( 17 )
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Wall_2/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_3" type="MeshInstance" parent="Room 1/Box"]
-transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40.2198, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 17 )
@@ -211,10 +244,10 @@ material/0 = ExtResource( 17 )
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Wall_3/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_4" type="MeshInstance" parent="Room 1/Box"]
-transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569376, 37.0752, -37.7189 )
+transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 17 )
@@ -222,15 +255,26 @@ material/0 = ExtResource( 17 )
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 1/Box/Wall_4/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="Room 1/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.005, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
 omni_range = 60.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 1/Box/OmniLight"]
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="OmniLight2" type="OmniLight" parent="Room 1/Box"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+shadow_enabled = true
+shadow_bias = 0.4
+omni_range = 60.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Room 1/Box/OmniLight2"]
 cast_shadow = 0
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
@@ -290,37 +334,45 @@ material = ExtResource( 17 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0 )
 
 [node name="Platform_1" type="CSGBox" parent="Room 2"]
-transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -2.01647, 29.2743, -33.1635 )
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 30, -35 )
 use_collision = true
 width = 0.1
-height = 80.3401
+height = 80.0
 depth = 10.0
 material = ExtResource( 16 )
+
+[node name="Platform_2" type="CSGBox" parent="Room 2"]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 80, 0 )
+material_override = ExtResource( 16 )
+use_collision = true
+width = 0.1
+height = 80.0
+depth = 80.0
 
 [node name="Box" type="Spatial" parent="Room 2"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 2/Box"]
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Floor_plane"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Floor_plane/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 6 )
 
-[node name="Celing_plane" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 75.2188, 0 )
+[node name="Ceiling_plane" type="MeshInstance" parent="Room 2/Box"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 200, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 16 )
 
-[node name="StaticBody" type="StaticBody" parent="Room 2/Box/Celing_plane"]
+[node name="StaticBody" type="StaticBody" parent="Room 2/Box/Ceiling_plane"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Celing_plane/StaticBody"]
-shape = SubResource( 4 )
+[node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Ceiling_plane/StaticBody"]
+shape = ExtResource( 6 )
 
 [node name="Wall_1" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.640566, 37.0752, 39.6568 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 16 )
@@ -328,10 +380,10 @@ material/0 = ExtResource( 16 )
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Wall_1/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_2" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2511, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 16 )
@@ -339,10 +391,10 @@ material/0 = ExtResource( 16 )
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Wall_2/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_3" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40.2198, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 16 )
@@ -350,10 +402,10 @@ material/0 = ExtResource( 16 )
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Wall_3/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_4" type="MeshInstance" parent="Room 2/Box"]
-transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569374, 37.0752, -37.7189 )
+transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 16 )
@@ -361,15 +413,26 @@ material/0 = ExtResource( 16 )
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 2/Box/Wall_4/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="Room 2/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.005, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
 omni_range = 60.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 2/Box/OmniLight"]
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="OmniLight2" type="OmniLight" parent="Room 2/Box"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+shadow_enabled = true
+shadow_bias = 0.4
+omni_range = 60.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Room 2/Box/OmniLight2"]
 cast_shadow = 0
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
@@ -431,7 +494,7 @@ material = ExtResource( 16 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0 )
 
 [node name="Ramp_1" type="CSGBox" parent="Room 3"]
-transform = Transform( -0.5, 0.866025, 3.25841e-07, 0.866025, 0.5, 0, -1.62921e-07, 2.82187e-07, -1, 10, 6.096, 34.6552 )
+transform = Transform( -0.5, 0.866025, 3.25841e-07, 0.866025, 0.5, 0, -1.62921e-07, 2.82187e-07, -1, 10, 6.096, 35 )
 use_collision = true
 width = 0.1
 height = 40.0
@@ -439,37 +502,45 @@ depth = 10.0
 material = ExtResource( 18 )
 
 [node name="Ramp_2" type="CSGBox" parent="Room 3"]
-transform = Transform( -8.14603e-08, 1.41093e-07, 1, 0.866025, 0.5, 0, -0.5, 0.866025, -1.62921e-07, -35.2101, 40.3702, -13.2244 )
+transform = Transform( -8.14603e-08, 1.41093e-07, 1, 0.866025, 0.5, 0, -0.5, 0.866025, -1.62921e-07, -35, 50.2285, -6.1168 )
 use_collision = true
 width = 0.1
-height = 40.0
+height = 81.9129
 depth = 10.0
 material = ExtResource( 18 )
 
+[node name="Platform_1" type="CSGBox" parent="Room 3"]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 80, 0 )
+material_override = ExtResource( 18 )
+use_collision = true
+width = 0.1
+height = 80.0
+depth = 80.0
+
 [node name="Box" type="Spatial" parent="Room 3"]
 
+[node name="Ceiling_plane" type="MeshInstance" parent="Room 3/Box"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 200, 0 )
+cast_shadow = 2
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="StaticBody" type="StaticBody" parent="Room 3/Box/Ceiling_plane"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Ceiling_plane/StaticBody"]
+shape = ExtResource( 6 )
+
 [node name="Floor_plane" type="MeshInstance" parent="Room 3/Box"]
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Floor_plane"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Floor_plane/StaticBody"]
-shape = SubResource( 4 )
-
-[node name="Celing_plane" type="MeshInstance" parent="Room 3/Box"]
-transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 75.2188, 0 )
-cast_shadow = 2
-mesh = SubResource( 3 )
-material/0 = ExtResource( 18 )
-
-[node name="StaticBody" type="StaticBody" parent="Room 3/Box/Celing_plane"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Celing_plane/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 6 )
 
 [node name="Wall_1" type="MeshInstance" parent="Room 3/Box"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.640566, 37.0752, 39.6568 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 18 )
@@ -477,10 +548,10 @@ material/0 = ExtResource( 18 )
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Wall_1/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_2" type="MeshInstance" parent="Room 3/Box"]
-transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2511, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 18 )
@@ -488,10 +559,10 @@ material/0 = ExtResource( 18 )
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Wall_2/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_3" type="MeshInstance" parent="Room 3/Box"]
-transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40.2198, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 18 )
@@ -499,10 +570,10 @@ material/0 = ExtResource( 18 )
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Wall_3/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_4" type="MeshInstance" parent="Room 3/Box"]
-transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569376, 37.0752, -37.7189 )
+transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 18 )
@@ -510,15 +581,26 @@ material/0 = ExtResource( 18 )
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 3/Box/Wall_4/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="Room 3/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.005, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
 omni_range = 60.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 3/Box/OmniLight"]
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="OmniLight2" type="OmniLight" parent="Room 3/Box"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+shadow_enabled = true
+shadow_bias = 0.4
+omni_range = 60.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Room 3/Box/OmniLight2"]
 cast_shadow = 0
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
@@ -578,37 +660,45 @@ material = ExtResource( 18 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0 )
 
 [node name="Ramp_1" type="CSGBox" parent="Room 4"]
-transform = Transform( -1.15202e-07, -1.15202e-07, 1, -0.818471, 0.574548, -2.81004e-08, -0.574548, -0.818471, -1.60479e-07, 33.3749, 22.7221, -20.1572 )
+transform = Transform( -9.34475e-08, -1.33457e-07, 1, -0.819152, 0.573576, 0, -0.573576, -0.819152, -1.62921e-07, 35, 22, -20 )
 use_collision = true
 width = 0.1
-height = 24.535
+height = 25.0
 depth = 10.0
 material = ExtResource( 14 )
+
+[node name="Platform_1" type="CSGBox" parent="Room 4"]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 80, 0 )
+material_override = ExtResource( 14 )
+use_collision = true
+width = 0.1
+height = 80.0
+depth = 80.0
 
 [node name="Box" type="Spatial" parent="Room 4"]
 
 [node name="Floor_plane" type="MeshInstance" parent="Room 4/Box"]
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Floor_plane"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Floor_plane/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 6 )
 
-[node name="Celing_plane" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 75.2188, 0 )
+[node name="Ceiling_plane" type="MeshInstance" parent="Room 4/Box"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 200, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = ExtResource( 1 )
 material/0 = ExtResource( 14 )
 
-[node name="StaticBody" type="StaticBody" parent="Room 4/Box/Celing_plane"]
+[node name="StaticBody" type="StaticBody" parent="Room 4/Box/Ceiling_plane"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Celing_plane/StaticBody"]
-shape = SubResource( 4 )
+[node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Ceiling_plane/StaticBody"]
+shape = ExtResource( 6 )
 
 [node name="Wall_1" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.640566, 37.0752, 39.6568 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 14 )
@@ -616,10 +706,10 @@ material/0 = ExtResource( 14 )
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_1"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Wall_1/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_2" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 38.2794, 37.0752, 1.93033 )
+transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 14 )
@@ -627,10 +717,10 @@ material/0 = ExtResource( 14 )
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Wall_2/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_3" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40.2198, 37.0752, 0.0846462 )
+transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 14 )
@@ -638,10 +728,10 @@ material/0 = ExtResource( 14 )
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Wall_3/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="Wall_4" type="MeshInstance" parent="Room 4/Box"]
-transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, -0.569, 37.075, -37.719 )
+transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 14 )
@@ -649,15 +739,26 @@ material/0 = ExtResource( 14 )
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_4"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Room 4/Box/Wall_4/StaticBody"]
-shape = SubResource( 4 )
+shape = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="Room 4/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.005, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
 omni_range = 60.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 4/Box/OmniLight"]
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="OmniLight2" type="OmniLight" parent="Room 4/Box"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+shadow_enabled = true
+shadow_bias = 0.4
+omni_range = 60.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Room 4/Box/OmniLight2"]
 cast_shadow = 0
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
