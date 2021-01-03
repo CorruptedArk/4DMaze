@@ -21,10 +21,10 @@ size = 42
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=3]
 
-[sub_resource type="PlaneMesh" id=3]
-material = SubResource( 7 )
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
 size = Vector2( 80, 200 )
 
 [sub_resource type="SphereMesh" id=5]
@@ -216,7 +216,7 @@ shape = ExtResource( 6 )
 [node name="Wall_1" type="MeshInstance" parent="Room 1/Box"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 17 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_1"]
@@ -227,7 +227,7 @@ shape = ExtResource( 3 )
 [node name="Wall_2" type="MeshInstance" parent="Room 1/Box"]
 transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 17 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_2"]
@@ -238,7 +238,7 @@ shape = ExtResource( 3 )
 [node name="Wall_3" type="MeshInstance" parent="Room 1/Box"]
 transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 17 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_3"]
@@ -249,7 +249,7 @@ shape = ExtResource( 3 )
 [node name="Wall_4" type="MeshInstance" parent="Room 1/Box"]
 transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 17 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 1/Box/Wall_4"]
@@ -269,7 +269,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
 [node name="OmniLight2" type="OmniLight" parent="Room 1/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
 omni_range = 60.0
@@ -330,6 +330,124 @@ height = 0.1
 depth = 10.0
 material = ExtResource( 17 )
 
+[node name="Red_Maze_Z_Walls" type="Spatial" parent="Room 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Red_Maze_X_Walls" type="Spatial" parent="Room 1"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, -5 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 70.0
+material = ExtResource( 17 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -5 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 70.0
+material = ExtResource( 17 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, -5 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 70.0
+material = ExtResource( 17 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 17 )
+
 [node name="Room 2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0 )
 
@@ -374,7 +492,7 @@ shape = ExtResource( 6 )
 [node name="Wall_1" type="MeshInstance" parent="Room 2/Box"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_1"]
@@ -385,7 +503,7 @@ shape = ExtResource( 3 )
 [node name="Wall_2" type="MeshInstance" parent="Room 2/Box"]
 transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_2"]
@@ -396,7 +514,7 @@ shape = ExtResource( 3 )
 [node name="Wall_3" type="MeshInstance" parent="Room 2/Box"]
 transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_3"]
@@ -407,7 +525,7 @@ shape = ExtResource( 3 )
 [node name="Wall_4" type="MeshInstance" parent="Room 2/Box"]
 transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 16 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 2/Box/Wall_4"]
@@ -427,10 +545,10 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
 [node name="OmniLight2" type="OmniLight" parent="Room 2/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
-omni_range = 60.0
+omni_range = 80.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 2/Box/OmniLight2"]
 cast_shadow = 0
@@ -490,6 +608,131 @@ height = 0.1
 depth = 10.0
 material = ExtResource( 16 )
 
+[node name="Green_Maze_Z_Walls" type="Spatial" parent="Room 2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Green_Maze_X_Walls" type="Spatial" parent="Room 2"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.00655936, -0.0186844, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 2/Green_Maze_X_Walls/Wall_6"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Wall_7" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 16 )
+
 [node name="Room 3" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0 )
 
@@ -542,7 +785,7 @@ shape = ExtResource( 6 )
 [node name="Wall_1" type="MeshInstance" parent="Room 3/Box"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_1"]
@@ -553,7 +796,7 @@ shape = ExtResource( 3 )
 [node name="Wall_2" type="MeshInstance" parent="Room 3/Box"]
 transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_2"]
@@ -564,7 +807,7 @@ shape = ExtResource( 3 )
 [node name="Wall_3" type="MeshInstance" parent="Room 3/Box"]
 transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_3"]
@@ -575,7 +818,7 @@ shape = ExtResource( 3 )
 [node name="Wall_4" type="MeshInstance" parent="Room 3/Box"]
 transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 18 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 3/Box/Wall_4"]
@@ -595,10 +838,10 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
 [node name="OmniLight2" type="OmniLight" parent="Room 3/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
-omni_range = 60.0
+omni_range = 80.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 3/Box/OmniLight2"]
 cast_shadow = 0
@@ -656,6 +899,131 @@ height = 0.1
 depth = 10.0
 material = ExtResource( 18 )
 
+[node name="Blue_Maze_Z_Walls" type="Spatial" parent="Room 3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls/Wall_1"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 15 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Wall_2" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 3/Blue_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Blue_Maze_X_Walls" type="Spatial" parent="Room 3"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.00655936, -0.0186844, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 18 )
+
 [node name="Room 4" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0 )
 
@@ -700,7 +1068,7 @@ shape = ExtResource( 6 )
 [node name="Wall_1" type="MeshInstance" parent="Room 4/Box"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 100, 40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_1"]
@@ -711,7 +1079,7 @@ shape = ExtResource( 3 )
 [node name="Wall_2" type="MeshInstance" parent="Room 4/Box"]
 transform = Transform( -1.62921e-07, -1, 0.000345306, 0, 0.000345306, 1, -1, 1.62921e-07, -5.62574e-11, 40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_2"]
@@ -722,7 +1090,7 @@ shape = ExtResource( 3 )
 [node name="Wall_3" type="MeshInstance" parent="Room 4/Box"]
 transform = Transform( -1.62921e-07, 1, -0.000488118, 0, 0.000488118, 1, 1, 1.62921e-07, -7.95246e-11, -40, 100, 0 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_3"]
@@ -733,7 +1101,7 @@ shape = ExtResource( 3 )
 [node name="Wall_4" type="MeshInstance" parent="Room 4/Box"]
 transform = Transform( -1, 3.25841e-07, 5.30863e-14, 0, -1.62921e-07, 1, 3.25841e-07, 1, 1.62921e-07, 0, 100, -40 )
 cast_shadow = 2
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 14 )
 
 [node name="StaticBody" type="StaticBody" parent="Room 4/Box/Wall_4"]
@@ -753,10 +1121,10 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
 [node name="OmniLight2" type="OmniLight" parent="Room 4/Box"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0 )
 shadow_enabled = true
 shadow_bias = 0.4
-omni_range = 60.0
+omni_range = 80.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Room 4/Box/OmniLight2"]
 cast_shadow = 0
@@ -795,6 +1163,124 @@ visible = false
 width = 0.1
 height = 20.0
 depth = 10.0
+material = ExtResource( 14 )
+
+[node name="White_Maze_Z_Walls" type="Spatial" parent="Room 4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 4/White_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="White_Maze_X_Walls" type="Spatial" parent="Room 4"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 85, 0 )
+
+[node name="Wall_1" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_3" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_4" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.00655936, -0.0186844, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_5" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_6" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
+material = ExtResource( 14 )
+
+[node name="Wall_7" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 80.0
 material = ExtResource( 14 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
