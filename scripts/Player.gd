@@ -1,13 +1,12 @@
 extends KinematicBody
 
 const GRAVITY = -24.8
-#const GRAVITY = 0
 export var vel = Vector3()
 const MAX_SPEED = 20
 const SPRINT_MULTIPLIER = 1.0005
 const JUMP_SPEED = 15
 const ACCEL = 4.5
-
+var lift = 1 # -1 means lift is active, 1 is inactive
 var room = 1
 var preview_room = 2
 
@@ -150,10 +149,15 @@ func process_input(delta):
 	
 	
 func process_movement(delta):
+	lift = 1
+	for body in get_parent().get_node("Room 1/Lift_Volume").get_overlapping_bodies():
+		if body == self:
+			lift = -1
+	
 	dir.y = 0
 	dir = dir.normalized()
 
-	vel.y += delta * GRAVITY
+	vel.y += delta * GRAVITY * lift
 
 	var hvel = vel
 	hvel.y = 0

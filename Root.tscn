@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/ceiling_and_floor_mesh.tres" type="PlaneMesh" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Titillium-Regular.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/ceiling_and_floor_boxshape.tres" type="Shape" id=6]
+[ext_resource path="res://scripts/End_Light_Body.gd" type="Script" id=7]
 [ext_resource path="res://assets/room_4_spatialmaterial.tres" type="Material" id=14]
 [ext_resource path="res://scripts/PreviewPlayer.gd" type="Script" id=15]
 [ext_resource path="res://assets/room_2_spatialmaterial.tres" type="Material" id=16]
@@ -33,6 +34,45 @@ height = 6.0
 
 [sub_resource type="SpatialMaterial" id=6]
 flags_unshaded = true
+
+[sub_resource type="SphereShape" id=7]
+
+[sub_resource type="SphereMesh" id=8]
+material = ExtResource( 14 )
+
+[sub_resource type="SpatialMaterial" id=9]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0, 1, 0, 1 )
+emission_enabled = true
+emission = Color( 0, 1, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0, 0, 1, 1 )
+emission_enabled = true
+emission = Color( 0, 0, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 5, 60, 5 )
 
 [node name="Root" type="Spatial"]
 
@@ -341,6 +381,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_1"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_2" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
 use_collision = true
@@ -348,6 +395,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_2"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Wall_3" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
@@ -357,6 +411,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_3"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_4" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
 use_collision = true
@@ -364,6 +425,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_4"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Wall_5" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
@@ -373,6 +441,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_5"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_6" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
 use_collision = true
@@ -381,12 +456,34 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 17 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_6"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_7" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
 use_collision = true
 width = 10.0
 height = 0.1
 depth = 80.0
+material = ExtResource( 17 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls/Wall_7"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Vertical_Wall" type="CSGBox" parent="Room 1/Red_Maze_Z_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, -30, 55, -35 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 120.0
 material = ExtResource( 17 )
 
 [node name="Red_Maze_X_Walls" type="Spatial" parent="Room 1"]
@@ -454,6 +551,58 @@ operation = 2
 width = 1.0
 height = 11.0
 depth = 9.5
+
+[node name="Vertical_Wall" type="CSGBox" parent="Room 1/Red_Maze_X_Walls"]
+transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 30, 55, -35 )
+use_collision = true
+width = 10.0
+height = 0.1
+depth = 120.0
+material = ExtResource( 17 )
+
+[node name="End_Light_Body" type="KinematicBody" parent="Room 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 199, -35 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room 1/End_Light_Body"]
+shape = SubResource( 7 )
+
+[node name="End_Light" type="OmniLight" parent="Room 1/End_Light_Body"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+omni_range = 10.0
+
+[node name="Ball" type="MeshInstance" parent="Room 1/End_Light_Body/End_Light"]
+cast_shadow = 0
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="CSGTorus" type="CSGTorus" parent="Room 1/End_Light_Body/End_Light"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 0 )
+inner_radius = 2.1
+outer_radius = 2.3
+sides = 3
+material = SubResource( 10 )
+
+[node name="CSGTorus2" type="CSGTorus" parent="Room 1/End_Light_Body/End_Light"]
+transform = Transform( -1.62921e-07, -1, 0, 0.766044, -1.24804e-07, -0.642788, 0.642788, -1.04723e-07, 0.766044, 0, 0, 0 )
+inner_radius = 2.1
+outer_radius = 2.3
+sides = 3
+material = SubResource( 11 )
+
+[node name="CSGTorus3" type="CSGTorus" parent="Room 1/End_Light_Body/End_Light"]
+transform = Transform( -1.62921e-07, -1, 0, 0.173648, -2.82909e-08, -0.984808, 0.984808, -1.60446e-07, 0.173648, 0, 0, 0 )
+inner_radius = 2.1
+outer_radius = 2.3
+sides = 3
+material = SubResource( 12 )
+
+[node name="Lift_Volume" type="Area" parent="Room 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 140, -35 )
+gravity_vec = Vector3( 0, 1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room 1/Lift_Volume"]
+shape = SubResource( 13 )
 
 [node name="Room 2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0 )
@@ -687,6 +836,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 16 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls/Wall_6"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 30 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 19.0
+
 [node name="Wall_7" type="CSGBox" parent="Room 2/Green_Maze_Z_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
 use_collision = true
@@ -706,6 +862,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 16 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 2/Green_Maze_X_Walls/Wall_1"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_2" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
 use_collision = true
@@ -713,6 +876,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 16 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 2/Green_Maze_X_Walls/Wall_2"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Wall_3" type="CSGBox" parent="Room 2/Green_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 10, 0, 0 )
@@ -760,6 +930,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 16 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 2/Green_Maze_X_Walls/Wall_7"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -15 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Room 3" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0 )
@@ -1011,7 +1188,7 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 18 )
 
-[node name="Gap_2" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_1"]
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_1"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 35 )
 operation = 2
 width = 1.0
@@ -1034,6 +1211,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 18 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_3"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_4" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.00655936, -0.0186844, 0 )
 use_collision = true
@@ -1041,6 +1225,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 18 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_4"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Wall_5" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, 0, 0 )
@@ -1050,6 +1241,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 18 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_5"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, -1.90735e-06, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_6" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
 use_collision = true
@@ -1057,6 +1255,13 @@ width = 10.0
 height = 0.1
 depth = 80.0
 material = ExtResource( 18 )
+
+[node name="Gap_1" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls/Wall_6"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -25 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
 
 [node name="Wall_7" type="CSGBox" parent="Room 3/Blue_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
@@ -1291,6 +1496,13 @@ height = 0.1
 depth = 80.0
 material = ExtResource( 14 )
 
+[node name="Gap_1" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_1"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 20, 0, 0 )
 use_collision = true
@@ -1301,6 +1513,13 @@ material = ExtResource( 14 )
 
 [node name="Gap_1" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_2"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 15 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_2"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
 operation = 2
 width = 1.0
 height = 11.0
@@ -1321,6 +1540,13 @@ width = 1.0
 height = 11.0
 depth = 9.5
 
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_3"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_4" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.00655936, -0.0186844, 0 )
 use_collision = true
@@ -1331,6 +1557,13 @@ material = ExtResource( 14 )
 
 [node name="Gap_1" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_4"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0.019, 0, 15 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_4"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0.019, 0, -35 )
 operation = 2
 width = 1.0
 height = 11.0
@@ -1351,6 +1584,13 @@ width = 1.0
 height = 11.0
 depth = 9.5
 
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_5"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_6" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -20, 0, 0 )
 use_collision = true
@@ -1366,6 +1606,13 @@ width = 1.0
 height = 11.0
 depth = 9.5
 
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_6"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
 [node name="Wall_7" type="CSGBox" parent="Room 4/White_Maze_X_Walls"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -30, 0, 0 )
 use_collision = true
@@ -1376,6 +1623,13 @@ material = ExtResource( 14 )
 
 [node name="Gap_1" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_7"]
 transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, 15 )
+operation = 2
+width = 1.0
+height = 11.0
+depth = 9.5
+
+[node name="Gap_2" type="CSGBox" parent="Room 4/White_Maze_X_Walls/Wall_7"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, 0, 0, -35 )
 operation = 2
 width = 1.0
 height = 11.0
