@@ -30,7 +30,9 @@ var preview_label
 var cant_swap_label
 var preview_player
 var hud
-var viewport_container
+var viewport_container: ViewportContainer
+var viewport: Viewport
+var lift_volume: Area
 
 func _ready():
 	camera = $Rotation_Helper/Camera
@@ -38,6 +40,7 @@ func _ready():
 	cant_swap_label = $HUD/Cant_swap_label
 	hud = $HUD
 	viewport_container = $HUD/ViewportContainer
+	viewport = $HUD/ViewportContainer/Viewport
 	
 	preview_player = get_parent().get_node("PreviewPlayer")
 
@@ -46,6 +49,7 @@ func _ready():
 	room_label.set_text("Room: 1")
 	preview_label = get_node("HUD/Preview_label")
 	preview_label.set_text("Preview: 1")
+	lift_volume = get_parent().get_node("Room 1/Lift_Volume")
 
 func can_swap(target):
 	return not preview_player.is_colliding()
@@ -61,9 +65,10 @@ func _physics_process(delta):
 
 func process_input(delta):
 	var hud_size = OS.get_window_size()
-	var view_size = viewport_container.get_size()
+	var view_size = Vector2(hud_size.x/4, hud_size.y/3)
+	viewport.size = view_size
+	viewport_container.set_size(view_size)
 	cant_swap_label.set_position(Vector2(hud_size.x/2 - cant_swap_label.get_size().x/2, cant_swap_label.get_position().y))
-	
 	viewport_container.set_position(Vector2(hud_size.x - view_size.x, 0))
 	
 	if cant_swap_label.is_visible():
@@ -77,15 +82,19 @@ func process_input(delta):
 	var input_movement_vector = Vector2()
 	
 	sprint = 1
-
-	if Input.is_action_pressed("movement_forward"):
-		input_movement_vector.y += 1
-	if Input.is_action_pressed("movement_backward"):
-		input_movement_vector.y -= 1
-	if Input.is_action_pressed("movement_left"):
-		input_movement_vector.x -= 1
-	if Input.is_action_pressed("movement_right"):
-		input_movement_vector.x += 1
+	if is_on_floor():
+		if Input.is_action_just_pressed("movement_jump"):
+			vel.y = JUMP_SPEED
+		if Input.is_action_pressed("sprint"):
+			sprint = SPRINT_MULTIPLIER
+		if Input.is_action_pressed("movement_forward"):
+			input_movement_vector.y += 1
+		if Input.is_action_pressed("movement_backward"):
+			input_movement_vector.y -= 1
+		if Input.is_action_pressed("movement_left"):
+			input_movement_vector.x -= 1
+		if Input.is_action_pressed("movement_right"):
+			input_movement_vector.x += 1
 
 	input_movement_vector = input_movement_vector.normalized()
 
@@ -94,15 +103,7 @@ func process_input(delta):
 	dir += cam_xform.basis.x * input_movement_vector.x 
 	# ----------------------------------
 
-	# ----------------------------------
-	# Jumping
-	if is_on_floor():
-		if Input.is_action_just_pressed("movement_jump"):
-			vel.y = JUMP_SPEED
-		
-		if Input.is_action_pressed("sprint"):
-			sprint = SPRINT_MULTIPLIER
-	# ----------------------------------
+	
 
 	# ----------------------------------
 	# Capturing/Freeing the cursor
@@ -146,13 +147,22 @@ func process_input(delta):
 		cant_swap_label.hide()
 	# ----------------------------------
 	
+func in_lift_volume() -> bool:
+	var x_dist = abs(lift_volume.get_global_transform().origin.x - get_global_transform().origin.x)
+	var y_dist = abs(lift_volume.get_global_transform().origin.y - get_global_transform().origin.y)
+	var z_dist = abs(lift_volume.get_global_transform().origin.z - get_global_transform().origin.z)
+	
+	var lift_shape = lift_volume.shape_owner_get_shape(lift_volume.get_shape_owners()[0], 0)
+	var lift_x_extent = lift_shape.get_extents().x
+	var lift_y_extent = lift_shape.get_extents().y
+	var lift_z_extent = lift_shape.get_extents().z
+	return x_dist <= lift_x_extent and y_dist <= lift_y_extent and z_dist <= lift_z_extent
 	
 	
 func process_movement(delta):
 	lift = 1
-	for body in get_parent().get_node("Room 1/Lift_Volume").get_overlapping_bodies():
-		if body == self:
-			lift = -1
+	if in_lift_volume():
+		lift = -1
 	
 	dir.y = 0
 	dir = dir.normalized()
@@ -168,8 +178,10 @@ func process_movement(delta):
 	var accel
 	if dir.dot(hvel) > 0:
 		accel = ACCEL
-	else:
+	elif is_on_floor():
 		accel = DEACCEL
+	else:
+		accel = 0
 
 	hvel = hvel.linear_interpolate(target, accel * delta)
 	vel.x = hvel.x * sprint
